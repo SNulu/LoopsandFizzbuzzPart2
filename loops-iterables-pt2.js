@@ -1,10 +1,54 @@
 // PART 0: Write a function called squareDance() that squares each number in an array.
+var squareDance = function(arrNum){
+
+	 for(var i= 0; i < arrNum.length; i++ ){
+
+	 	arrNum[i] = Math.pow(arrNum[i], 2) 
+	}
+ 	return arrNum
+
+}
 
 console.assert(squareDance([1, 2])[1] === 4)
 console.assert(squareDance([5,10,15])[2] === 225)
 console.assert(squareDance([3,6,9,3])[0] === 9)
 
 // PART 1: write a function called nicer(). It should clean up the language in its input sentence.
+// var nicer = function (stringArray){
+// 	// Need to find not nice words and delete them
+
+// 	 str.split('')
+
+// 	for(var i= 0; i < stringArray.length; i++) {
+
+// 		stringArray[i] = 
+// 	}
+// 	return stringArray
+// }
+var nicer = function (stringArray){
+
+	var naughtyWords = ['heck', 'darn', 'crappy', 'dang']
+	var words = stringArray.split(' ')
+	var naughtWordsLocation = []
+
+	for(var i = 0; i < words.length; i++){
+
+		if(naughtyWords.indexOf(words[i]) !== -1){
+			naughtWordsLocation.push(i)
+		}
+	}
+	  console.log(naughtWordsLocation)
+
+	for( var i = naughtWordsLocation.length-1; i >= 0 ; i--){
+		console.log(i + ' ' + words[naughtWordsLocation[i]])
+		words.splice( naughtWordsLocation[i], 1 )
+		// words.slice(naughtWordsLocation[i], 1)
+	}
+
+	console.log(words)
+	return words.join(' ')
+
+}
 
 console.assert(nicer("mom get the heck in here and bring me a darn sandwich.") === "mom get the in here and bring me a sandwich.")
 
@@ -12,7 +56,7 @@ console.assert(nicer("here son, your crappy sandwich is on the dang plate.") ===
 
 // PART 2: write a function called capitalizeAll(). It should take as input a sentence and capitalize the first letter of every word in the sentence. 
 
-console.assert(capitalizeAll('every day is like sunday.') === 'Every Day Is Like Sunday.'))
+console.assert(capitalizeAll('every day is like sunday.') === 'Every Day Is Like Sunday.')
 
 // PART 3: write a function called properSentences(). It should take as input a string and capitalize the first letter of every sentence in that string. (For our purposes, all sentences will end with periods. Write one that works with ? and ! and receive a gratifying high five, right on the hand!)
 
