@@ -37,7 +37,6 @@ var nicer = function (stringArray){
 			naughtWordsLocation.push(i)
 		}
 	}
-	  console.log(naughtWordsLocation)
 
 	for( var i = naughtWordsLocation.length-1; i >= 0 ; i--){
 		console.log(i + ' ' + words[naughtWordsLocation[i]])
@@ -45,7 +44,6 @@ var nicer = function (stringArray){
 		// words.slice(naughtWordsLocation[i], 1)
 	}
 
-	console.log(words)
 	return words.join(' ')
 
 }
@@ -55,16 +53,48 @@ console.assert(nicer("mom get the heck in here and bring me a darn sandwich.") =
 console.assert(nicer("here son, your crappy sandwich is on the dang plate.") === "here son, your sandwich is on the plate.")
 
 // PART 2: write a function called capitalizeAll(). It should take as input a sentence and capitalize the first letter of every word in the sentence. 
+var capitalizeAll = function(sentence) {
+	var words = sentence.split(' ')
+	for(var i = 0; i < words.length; i++){
+		var letters = words[i].split('')
+		letters[0]  = letters[0].toUpperCase()
+		words[i]    = letters.join('')
+	}
+	return words.join(' ')
 
+}
 console.assert(capitalizeAll('every day is like sunday.') === 'Every Day Is Like Sunday.')
 
 // PART 3: write a function called properSentences(). It should take as input a string and capitalize the first letter of every sentence in that string. (For our purposes, all sentences will end with periods. Write one that works with ? and ! and receive a gratifying high five, right on the hand!)
+var properSentences = function(paragraph) {
+	var sentences = paragraph.split('. ')
+	console.log (sentences)
+	for(var i = 0; i < sentences.length; i++) {
 
+		console.log(sentences[i])
+		var words = sentences[i].split(' ')
+		var letters = words[0].split('')
+		console.log(letters)
+		letters[0] =letters[0].toUpperCase()
+		console.log(letters)
+		words[0] = letters.join('')
+		sentences[i] = words.join(' ')
+	}
+	return sentences.join('. ')
+}
 var paragraph = 'it was a fine morning. the wine was good. light slanted in through the cafe window.'
 
 console.assert(properSentences(paragraph) === "It was a fine morning. The wine was good. Light slanted in through the cafe window.")
 
 // PART 4: write a function called iPutTheFunIn(). It should take a string as input. The output should be a copy of the original string with the word 'fun' inserted into the center of the string. 
+var iPutTheFunIn = function(word) {
+	var center = word.length / 2
+	console.log(word.length)
+	console.log(center +' ' +word.slice (0, center) + " " + word.slice(center , word.length))
+	var funword = word.slice (0, center) + "fun" + word.slice(center, word.length)
+	console.log(word + ' ' +funword)
+	return funword
+}
 
 console.assert(iPutTheFunIn("funerary") === "funefunrary")
 console.assert(iPutTheFunIn("reds") === "refunds")
