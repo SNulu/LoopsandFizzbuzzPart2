@@ -102,6 +102,11 @@ console.assert(iPutTheFunIn("reds") === "refunds")
 // PART 5: write a function called pipeline(). it should take three inputs: (1) a starting value, (2) a function, and (3) another function. it should use functions (2) and (3) on the starting value, one after the other, and return a new value that has been processed by both function (2) and function (3).
 
 // the following three tests all correspond to the pipeline() function.
+var pipeline = function(variable, function1, function2){
+	var stepone = function1 (variable) 
+	var steptwo = function2 (stepone)
+	return steptwo
+}
 
 // test 1
 var paragraph = 'mom bring your crappy self in here. i want a dang sandwich.'
@@ -125,6 +130,7 @@ var exclaimAll = function(arr) {
 	for (var i = 0; i < arr.length; i ++) {
 		newArr.push(arr[i] + '!')
 	}
+	return newArr
 }
 
 var result = pipeline([10,20,30],squareDance,exclaimAll)
